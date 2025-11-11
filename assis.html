@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Horizon Travel - Assistência</title>
+    <link rel="stylesheet" href="assis.css">
+    <!-- Verifique se img/South.png existe na pasta correta -->
+    <link rel="icon" type="image/png" href="img/South.png">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Ícone do chat de assistência na barra superior -->
+    <div style="background: #FB923C; width: 100%; padding: 10px 0; display: flex; justify-content: flex-end; align-items: center;">
+        <a href="assis.html" title="Chat de Assistência" style="margin-right: 30px;">
+            <i class="fa-solid fa-comments" style="font-size: 2em; color: white;"></i>
+        </a>
+    </div>
+
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <h2>Bem-vindo à South Horizon Travel</h2>
+            <div id="login-form">
+                <h3>Login</h3>
+                <input type="text" id="login-username" placeholder="Usuário">
+                <input type="password" id="login-password" placeholder="Senha">
+                <button id="login-btn" class="action-button">Entrar</button>
+                <p id="login-error" style="color: red; display: none;">Credenciais inválidas.</p>
+                <button id="show-register-btn" class="action-button secondary">Cadastrar</button>
+            </div>
+            <div id="register-form" style="display: none;">
+                <h3>Cadastro</h3>
+                <input type="text" id="register-username" placeholder="Usuário">
+                <input type="text" id="register-email" placeholder="E-mail">
+                <input type="password" id="register-password" placeholder="Senha">
+                <button id="register-btn" class="action-button">Cadastrar</button>
+                <p id="register-error" style="color: red; display: none;">Usuário ou e-mail já existe ou campos inválidos.</p>
+                <button id="show-login-btn" class="action-button secondary">Voltar ao Login</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-container" style="display: none;">
+        <img src="img/South.png" alt="South Horizon Travel Logo" style="max-width: 100px; margin-bottom: 10px;">
+        <h1>South Horizon Travel - Chat de Assistência</h1>
+
+        <div id="conversation-display" class="conversation-display">
+            <!-- As mensagens da conversa serão exibidas aqui -->
+        </div>
+
+        <div id="choices-area" class="choices-area">
+            <!-- Os botões de escolha do usuário serão exibidos aqui -->
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Digite sua pergunta ou filtro (ex.: pacotes para Gramado)">
+            <button id="send-input" class="action-button">Enviar</button>
+        </div>
+
+        <div class="controls">
+            <button id="restart-button" class="action-button">Reiniciar Conversa</button>
+        </div>
+
+        <div class="contact-area">
+            <a href="https://wa.me/5551999999999" target="_blank" class="action-button">Fale pelo WhatsApp</a>
+            <a id="email-link" href="mailto:southhorizontravel@gmail.com" target="_blank" class="action-button">Enviar E-mail</a>
+        </div>
+
+        <div id="message-box" class="modal">
+            <div class="modal-content">
+                <p id="message-text"></p>
+                <button id="close-message-btn" class="action-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assis.js"></script>
+</body>
+</html>

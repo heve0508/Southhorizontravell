@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotéis - South Horizon Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+</head>
+<body>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="hamburger-menu" class="hamburger-menu">
+        <ul>
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="flights.html" class="nav-link">Voos</a></li>
+            <li><a href="buses.html" class="nav-link active">Ônibus</a></li>
+            <li><a href="cars.html" class="nav-link">Aluguel de Carros</a></li>
+            <li><a href="hotels.html" class="nav-link">Hotéis</a></li>
+            <li><a href="restaurants.html" class="nav-link">Restaurantes</a></li>
+            <li><a href="destinations.html" class="nav-link">Destinos</a></li>
+            <li><a href="promotions.html" class="nav-link">Promoções</a></li>
+            <li><a href="info.html" class="nav-link">Sobre nós</a></li>
+            <li><a href="purchases.html" class="nav-link" onclick="showPurchases()">Minhas Compras</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button onclick="showLogin()">Login</button>
+        </div>
+    </div>
+    <header>
+        <div class="top-bar">
+            <a href="assis.html" title="Chat de Assistência" class="chat-icon">
+                <i class="fa-solid fa-comments"></i>
+            </a>
+        </div>
+        <div class="logo">
+            <img src="img/South.png" alt="South Horizon Travel Logo">
+            <h2>South Horizon Travel</h2>
+        </div>
+    </header>
+
+    <section id="hotels" class="section">
+        <h2>Hotéis</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipOEUEinE94v2Sr1lWZCLB9yaYnt_KuxOzaQ9mmh=s680-w680-h510-rw" alt="Hotel Torres">
+                <h3>Hotel Ficare Torres</h3>
+                <p>Estrelas: 3 - Endereço: Av. Barão do Rio Branco, 31 - 107, 1°Andar - Centro, Torres - RS, 95560-000</p>
+                <button onclick="openModal('hotel', 'Hotel Torres', '3 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipMhLBJtiEMtJhp_P_Z8g7k0Nh7w5qfaWHObjIrv=s680-w680-h510-rw" alt="Hotel Vacaria">
+                <h3>Vacaria Palace Hotel</h3>
+                <p>Estrelas: 4 - Endereço: R. Dr. Flores, 437 - Centro, Vacaria - RS, 95200-103</p>
+                <button onclick="openModal('hotel', 'Hotel Vacaria', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipM-EwUwhWY5P8TBKmn475jfiY2hPjSK0aYRQT-w=s680-w680-h510-rw" alt="Hotel Bento Gonçalves">
+                <h3>Tri Hotel Vittoria - Bento Gonçalves</h3>
+                <p>Estrelas: 4 - Endereço: Condomínio Vittoria Flat Centro Bento Gonçalves - RS, 9570, R. 13 de Maio, 800 - São Bento, Bento Gonçalves - RS, 95700-052</p>
+                <button onclick="openModal('hotel', 'Hotel Bento Gonçalves', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipMvR4IvW8quDtr_oehuIYWLYlcD4lXXTQxE7nPn=s680-w680-h510-rw" alt="Hotel Porto Alegre">
+                <h3>Bela Vista Flat - Porto Alegre</h3>
+                <p>Estrelas: 4 - Endereço: Av. Cel. Lucas de Oliveira, 1081 - Bela Vista, Porto Alegre - RS, 90440-011</p>
+                <button onclick="openModal('hotel', 'Hotel Porto Alegre', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/24/fb/11/e7/laghetto-viverone-canela.jpg?w=900&h=500&s=1" alt="Pousada Canela">
+                <h3>Hotel Laghetto Vivace - Canela</h3>
+                <p>Estrelas: 4 - Endereço: Av. Júlio de Castilhos, 602 - Q.ta da Serra, Canela - RS, 95680-000</p>
+                <button onclick="openModal('hotel', 'Hotel em Canela', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/2e/df/87/38/caption.jpg" alt="Hotel de Luxo Gramado">
+                <h3>Hotel Monte Felice Bosque - Gramado</h3>
+                <p>Estrelas: 5 - Endereço: Rua Gil, 140 - Parque das Orquídeas, Gramado - RS, 95670-566</p>
+                <button onclick="openModal('hotel', 'Hotel de Luxo Gramado', '5 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipMGIYHWe1JSi2jzeB5cHuDHbuD1NSS--F0l8lYp=s680-w680-h510-rw" alt="Hotel de Cruz Alta">
+                <h3>Hotel Da Cuia - Cruz Alta</h3>
+                <p>Estrelas: 4 - Endereço: Av. Plácido de Castro, 190 - Jardim América, Cruz Alta - RS, 98035-038</p>
+                <button onclick="openModal('hotel', 'Hotel de Cruz Alta', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipPCYlR-AJ-s3m541f5uDe6OQohqFf8uwSoZ16XN=s680-w680-h510-rw" alt="Hotel de Erechim">
+                <h3>Blue Open Hotel - Erechim</h3>
+                <p>Estrelas: 4 - Endereço: R. Gaurama, 335 - Centro, Erechim - RS, 99700-070</p>
+                <button onclick="openModal('hotel', 'Hotel de Erechim', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipNCD87Szc086dw9_T_hlwyuqFSmC9Uq1UhsSsPn=s680-w680-h510-rw" alt="Hotel de Alegrete">
+                <h3>Hotel Caverá - Alegrete</h3>
+                <p>Estrelas: 4 - Endereço: R. Bento Manoel, 839 - Centro, Alegrete - RS, 97543-070</p>
+                <button onclick="openModal('hotel', 'Hotel de Alegrete', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="data:image/jpeg;base64,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" alt="Pousada em Barra do Ribeiro">
+                <h3>Pousada Nascer Do Sol - Barra do Ribeiro</h3>
+                <p>Estrelas: 4 - Endereço: R. Antônio Joaquim Evangelista, 295 - Tangará, Barra do Ribeiro - RS, 96790-000</p>
+                <button onclick="openModal('hotel', 'Pousada Nascer do Sol', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/93439095.jpg?k=0a119b06d8507702f35fbb5bc6a739f8f30cf5a2c7beca220ae788d24eec6403&o=&hp=1" alt="Alano Executive Hotel">
+                <h3>Alano Executive Hotel - Cachoeirinha</h3>
+                <p>Estrelas: 4 - Endereço: Av. Gen. Flores da Cunha, 4300 - Vila Bom Princípio, Cachoeirinha - RS, 94950-001</p>
+                <button onclick="openModal('hotel', 'Alano Executive Hotel', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipM_WGH7Jp0e7hXpxKlABGuUQEO-j2-BYGhtIAan=w408-h272-k-no" alt="Hotel de Santo Ângelo">
+                <h3>Hotel Nova Esperança - Santo Ângelo</h3>
+                <p>Estrelas: 4 - Endereço: R. Sete Povos das Missões, 463 - Centro, Santo Ângelo - RS, 98801-290</p>
+                <button onclick="openModal('hotel', 'Hotel de Santo Ângelo', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+             <div class="card">
+                <img src="https://turis-hotel-passo-fundo.riograndedosulhotels.net/data/Images/OriginalPhoto/14737/1473705/1473705643/image-passo-fundo-turis-hotel-30.JPEG" alt="Hotel de Passo Fundo">
+                <h3>Turis Hotel - Passo Fundo</h3>
+                <p>Estrelas: 4 - Endereço: Rua Bento Gonçalves, 349 - Centro, Passo Fundo - RS, 99010-010</p>
+                <button onclick="openModal('hotel', 'Hotel de passo fundo', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+             <div class="card">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/484896816.jpg?k=4eb403550168e2cee319ccb9a3ad2959fd59032a5c6b4a09bd12ee672ff4e09b&o=&hp=1" alt="Pousada de Uruguaiana">
+                <h3>Pousada A Cabana - Uruguaiana</h3>
+                <p>Estrelas: 4 - Endereço: R. Domingos de Almeida, 2482 - Centro, Uruguaiana - RS, 97501-690</p>
+                <button onclick="openModal('hotel', 'Pousada de Uruguaiana', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+             <div class="card">
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/18/b2/ad/d9/pousada-laranja-fica.jpg" alt="Pousada de Xangri-lá">
+                <h3>Pousada Laranja - Xangri-lá</h3>
+                <p>Estrelas: 4 - Endereço:R. Johann Strauss, 75 - Balneário Arpoador, Xangri-lá - RS, 95588-000
+</p>
+                <button onclick="openModal('hotel', 'Pousada de Xangri-lá', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/324427234.jpg?k=2e81d4cbb25af8f030500cf4178f30709bf1b832bd66a8555f85fe32b8a062cb&o=&hp=1" alt="Hotel e Pousada Coimbra - Pelotas">
+                <h3>Coimbra Hotel Pousada - Pelotas</h3>
+                <p>Estrelas: 4 - Endereço:Av. Fernando Osório, 5464 - Três Vendas, Pelotas - RS, 96070-740
+</p>
+                <button onclick="openModal('hotel', 'Hotel e pousada coimbra', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+                <div class="card">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNvG0MdaamWXPiwRokZ0oWj0dHRH9z61bqIGQVw=w468-h240-k-no" alt="dallé hotel- bagé">
+                    <h3>Dallé Hotel - Bagé</h3>
+                    <p>Estrelas: 4 - Endereço:Av. Santa Tecla, 451 - Getúlio Vargas, Bagé - RS, 96412-000</p>
+                    <button onclick="openModal('hotel', 'dallé hotel - bagé', '4 Estrelas')">Ver Detalhes</button>
+        </div>
+          <div class="card">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/366296561.jpg?k=a4551f206dca6eebf1d5574aaa4057f72378a87427d00a3c685562833a61b0e1&o=&hp=1" alt="Intercity - Canoas">
+                    <h3>Intercity - Canoas</h3>
+                    <p>Estrelas: 4 - Endereço:Av. Getúlio Vargas, 4861 - Centro, Canoas - RS, 92010-011</p>
+                    <button onclick="openModal('hotel', 'Intercity - canoas', '4 Estrelas')">Ver Detalhes</button>
+            <!-- Removidos os cards duplicados de "Hotel Monte Felice Bosque - Gramado" -->
+        </div>
+           <div class="card">
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/28/6f/15/8c/hotel-dom-rafael-business.jpg" alt="Hotel Dom Rafael Business - Santa Maria">
+                    <h3>Hotel Dom Rafael Business - Santa Maria</h3>
+                    <p>Estrelas: 4 - Endereço:Av. Nossa Sra. das Dores, 903 - Nossa Sra. das Dores, Santa Maria - RS, 97050-531</p>
+                    <button onclick="openModal('hotel', 'hotel Dom Rafael Business', '4 Estrelas')">Ver Detalhes</button>
+        </div>
+         <div class="card">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOmVH-CqQDqQ2BBuk5YNBn7432rsnbLs55WI9Tn=w408-h273-k-no" alt="Hotel Santa Cruz - Santa Cruz Do Sul">
+                    <h3>Hotel Santa cruz - Santa Cruz Do Sul</h3>
+                    <p>Estrelas: 4 - Endereço:: R. Ramiro Barcelos, 1122 - Centro, Santa Cruz do Sul - RS, 96810-050
+</p>
+                    <button onclick="openModal('hotel', 'hotel Santa Cruz', '4 Estrelas')">Ver Detalhes</button>
+        </div>
+         <div class="card">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPT4rZKMZXBj-XXGDLI9tJgOkzSbgG2GQrxu-cn=w426-h240-k-no" alt="Pousada Morada Summer Beach Beira Mar- Tramandaí">
+                    <h3>Pousada Morada Summer Beach Beira Mar  - Tramandaí</h3>
+                    <p>Estrelas: 4 - Endereço::Av. Beira-Mar, 2842 - zona nova / centro, Tramandaí - RS, 95590-000
+</p>
+                    <button onclick="openModal('hotel', ' Pousada em tramandaí', '4 Estrelas')">Ver Detalhes</button>
+   
+        </div>
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div id="modal-results"></div>
+            <form id="modal-form">
+                <!-- Conteúdo dinâmico será inserido pelo JavaScript -->
+            </form>
+            <div id="pix-payment" style="display: none; text-align: center; margin-top: 20px;">
+                <div id="qrcode"></div>
+                <div class="pix-key-container">
+                    <label for="pix-key">Chave Pix (Copia e Cola):</label>
+                    <input type="text" id="pix-key" readonly>
+                    <button type="button" onclick="copyPixKey()">Copiar Chave</button>
+                </div>
+                <p id="pix-validation" style="color: green;"></p>
+            </div>
+        </div>
+    </div>
+    <div id="whatsapp-button" class="whatsapp-button">
+        <button onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i> Fale Conosco</button>
+    </div>
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeWhatsAppModal()">&times;</span>
+            <h2>Fale Conosco via WhatsApp</h2>
+            <p>Envie sua mensagem e entraremos em contato!</p>
+            <form id="whatsapp-form">
+                <label for="whatsapp-name">Nome:</label>
+                <input type="text" id="whatsapp-name" required>
+                <label for="whatsapp-phone">Telefone (ex.: +55XXYYYYYYYY):</label>
+                <input type="tel" id="whatsapp-phone" required>
+                <label for="whatsapp-message">Mensagem:</label>
+                <textarea id="whatsapp-message" required></textarea>
+                <button type="submit">Enviar via WhatsApp</button>
+            </form>
+            <p id="whatsapp-error" style="color: red; display: none;"></p>
+        </div>
+    </div>
+ <footer>
+    <p>&copy; South Horizon Travel | southhorizontravel@gmail.com | (51) 98129-9926 | © 2025</p>
+    <div style="margin-top: 18px;">
+        <strong>Encontre a South Horizon Travel:</strong>
+        <a href="https://wa.me/5551981299926?text=quero+saber+mais!" target="_blank" title="WhatsApp" style="margin: 0 10px;">
+            <i class="fab fa-whatsapp" style="font-size: 2em; color: #25D366; vertical-align: middle;"></i>
+        </a>
+        <a href="https://www.instagram.com/southhorizontravel/" target="_blank" title="Instagram" style="margin: 0 10px;">
+            <i class="fab fa-instagram" style="font-size: 2em; color: #C13584; vertical-align: middle;"></i>
+        </a>
+    </div>
+</footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById('hamburger-menu');
+        menu.classList.toggle('show');
+    }
+    window.addEventListener('resize', function() {
+        if(window.innerWidth > 900) {
+            document.getElementById('hamburger-menu').classList.remove('show');
+        }
+    });
+    </script>
+</body>
+</html>

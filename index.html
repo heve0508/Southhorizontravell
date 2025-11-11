@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Horizon Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+</head>
+<body>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="hamburger-menu" class="hamburger-menu">
+        <ul>
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="flights.html" class="nav-link">Voos</a></li>
+            <li><a href="buses.html" class="nav-link active">Ônibus</a></li>
+            <li><a href="cars.html" class="nav-link">Aluguel de Carros</a></li>
+            <li><a href="hotels.html" class="nav-link">Hotéis</a></li>
+            <li><a href="restaurants.html" class="nav-link">Restaurantes</a></li>
+            <li><a href="destinations.html" class="nav-link">Destinos</a></li>
+            <li><a href="promotions.html" class="nav-link">Promoções</a></li>
+            <li><a href="info.html" class="nav-link">Sobre nós</a></li>
+            <li><a href="purchases.html" class="nav-link" onclick="showPurchases()">Minhas Compras</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button onclick="showLogin()">Login</button>
+        </div>
+    </div>
+    <header>
+        <div class="top-bar">
+            <a href="assis.html" title="Chat de Assistência" class="chat-icon">
+                <i class="fa-solid fa-comments"></i>
+            </a>
+        </div>
+        <div class="logo">
+            <img src="img/South.png" alt="South Horizon Travel Logo">
+            <h2>South Horizon Travel</h2>
+        </div>
+    </header>
+    <section id="home" class="hero">
+    <div class="hero-slides">
+        <div class="carousel-slide active">
+            <img src="https://i.pinimg.com/1200x/66/c1/bc/66c1bc7062ccf352adc112c9ba45118e.jpg" alt="Gramado">
+        </div>
+    </div>
+    <div class="search-form">
+        <h1>Planeje sua Viagem no Rio Grande do Sul</h1>
+        <p>Descubra os melhores destinos com conforto e economia</p>
+        <form id="search-trip-form">
+                <div class="form-group">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <select id="origem" required>
+                        <option value="">Origem (Embarque)</option>
+                        <option value="Porto Alegre">Porto Alegre</option>
+                        <option value="Gramado">Gramado</option>
+                        <option value="Bento Gonçalves">Bento Gonçalves</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <select id="destino" required>
+                        <option value="">Destino</option>
+                        <option value="Gramado">Gramado</option>
+                        <option value="Bento Gonçalves">Bento Gonçalves</option>
+                        <option value="Torres">Torres</option>
+                        <option value="Porto Alegre">Porto Alegre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" id="dataIda" required placeholder="Data de Ida">
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" id="dataVolta" required placeholder="Data de Volta">
+                </div>
+                <button type="submit" class="search-button"><i class="fas fa-search"></i> Buscar Viagens</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="flights" class="section">
+        <h2>Voos</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://cdn.panrotas.com.br/portal-panrotas-statics/media-files-cache/334042/e66c929a0d582bcde0c05fcc44d3742014aviaodeafrotamaismagicadomundo/77,0,2412,1440/1206,720,0.28/0/default.jpg" alt="Voo Porto Alegre - Gramado">
+                <h3>Voo Porto Alegre - Gramado</h3>
+                <p>Companhia: Azul - R$350,00/Pessoa</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Gramado', 'R$350,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="data:image/jpeg;base64,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" alt="Voo Porto Alegre - Torres">
+                <h3>Voo Porto Alegre - Torres</h3>
+                <p>Companhia: Gol - R$280,00/Pessoa</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Torres', 'R$280,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNHWiEYACvPwb2n4xv21K7DtQaafdas47jFQ&s" alt="Voo Porto Alegre - Bento Gonçalves">
+                <h3>Voo Porto Alegre - Bento Gonçalves</h3>
+                <p>Companhia: LATAM - R$320,00/Pessoa</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Bento Gonçalves', 'R$320,00')">Reservar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="buses" class="section">
+        <h2>Ônibus</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://p10-prd-strapi.s3.amazonaws.com/ar_landing_descripcion_imagen_omnibus_micro_empresas_2_foto_empresa_landing_citral_ddaf30eb86.jpg" alt="Ônibus Porto Alegre - Gramado">
+                <h3>Ônibus Porto Alegre - Gramado</h3>
+                <p>Empresa: Viação Citral - R$60,00</p>
+                <button onclick="openModal('bus', 'Ônibus Porto Alegre - Gramado', 'R$60,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://institucional.planalto.com.br/wp-content/uploads/sites/3/2025/04/Prancheta-1.png" alt="Ônibus Porto Alegre - Uruguaiana">
+                <h3>Ônibus Porto Alegre - Uruguaiana</h3>
+                <p>Empresa: Planalto - R$100,00/Pessoa</p>
+                <button onclick="openModal('bus', 'Ônibus Porto Alegre - Uruguaiana', 'R$100,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuJc_6MwKv_kh0QCRzmF44MMVKRlyDgM0oZA&s" alt="Ônibus Porto Alegre - Bento Gonçalves">
+                <h3>Ônibus Porto Alegre - Bento Gonçalves</h3>
+                <p>Empresa: Bento Transportes - R$55,00/Pessoa</p>
+                <button onclick="openModal('bus', 'Ônibus Porto Alegre - Bento Gonçalves', 'R$55,00')">Reservar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="cars" class="section">
+        <h2>Aluguel de Automóveis</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://www.localiza.com/brasil-site/geral/Frota/COMP.png" alt="Jeep Compass 1.3 Turbo, Volkswagen Taos 1.4 TSI, Hyundai New Tucson 1.6 Turbo ou similar*">
+                <h3>Jeep Compass 1.3 Turbo, Volkswagen Taos 1.4 TSI, Hyundai New Tucson 1.6 Turbo ou similar</h3>
+                <p>R$537,29/Dia</p>
+                <button onclick="openModal('car', 'Jeep Compass', 'R$537,29/dia')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://www.localiza.com/brasil-site/geral/Frota/ARGO.png" alt="Fiat Argo 1.0, VW Polo 1.0, Hyundai HB20 1.0 ou similar">
+                <h3>Fiat Argo 1.0, VW Polo 1.0, Hyundai HB20 1.0 ou similar</h3>
+                <p>R$130,95/Dia</p>
+                <button onclick="openModal('car', 'Fiat Argo', 'R$130,95/dia')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://www.localiza.com/brasil-site/geral/Frota/MOBI.png" alt="Fiat Mobi 1.0, Renault Kwid 1.0 ou similar*">
+                <h3>Fiat Mobi 1.0, Renault Kwid 1.0 ou similar</h3>
+                <p>R$126,91/Dia</p>
+                <button onclick="openModal('car', 'Fiat Mobi', 'R$126,91/Dia')">Reservar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="hotels" class="section">
+        <h2>Hotéis</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipOEUEinE94v2Sr1lWZCLB9yaYnt_KuxOzaQ9mmh=s680-w680-h510-rw" alt="Hotel Torres">
+                <h3>Hotel Ficare Torres</h3>
+                <p>Estrelas: 3 - Endereço: Av. Barão do Rio Branco, 31 - 107, 1°Andar - Centro, Torres - RS, 95560-000</p>
+                <button onclick="openModal('hotel', 'Hotel Torres', '3 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipMhLBJtiEMtJhp_P_Z8g7k0Nh7w5qfaWHObjIrv=s680-w680-h510-rw" alt="Hotel Vacaria">
+                <h3>Vacaria Palace Hotel</h3>
+                <p>Estrelas: 4 - Endereço: R. Dr. Flores, 437 - Centro, Vacaria - RS, 95200-103</p>
+                <button onclick="openModal('hotel', 'Hotel Vacaria', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipM-EwUwhWY5P8TBKmn475jfiY2hPjSK0aYRQT-w=s680-w680-h510-rw" alt="Hotel Bento Gonçalves">
+                <h3>Tri Hotel Vittoria - Bento Gonçalves</h3>
+                <p>Estrelas: 4 - Endereço: Condomínio Vittoria Flat Centro Bento Gonçalves - RS, 9570, R. 13 de Maio, 800 - São Bento, Bento Gonçalves - RS, 95700-052</p>
+                <button onclick="openModal('hotel', 'Hotel Bento Gonçalves', '4 Estrelas')">Ver Detalhes</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="restaurants" class="section">
+        <h2>Restaurantes</h2>
+        <div class="grid">
+            <div class="card">
+             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_n64qA8cNxwR095GtomzCkAtXLuxvmOsd-ajWSbzYQ7uscMw0GEQunmdezpdg0xVH4pM&usqp=CAU" alt="Restaurante Vegano">
+                <h3>Alecrim Sabor & saúde</h3>
+                <p>Porto Alegre - Endereço: R. Erasto Roxo de Araújo Corrêa, 24 - Boa Vista, Porto Alegre - RS, 91340-180</p>
+                <button onclick="openModal('restaurant', 'Churrascaria Gaúcha', 'Porto Alegre')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkoP98EkoqLz5JrCRyrfQKTj3J7wc3oSdUxw&s" alt="Restaurante Italiano">
+                <h3>Restaurante Di Paolo - Bento Gonçalves</h3>
+                <p>Bento Gonçalves - Endereço:Km 217 BR-470 s/n - Pomarosa, Bento Gonçalves - RS, 95700-000</p>
+                <button onclick="openModal('restaurant', 'Restaurante Italiano', 'Bento Gonçalves')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+               <img src="data:image/jpeg;base64,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" alt="Restaurante de Frutos do Mar">
+                <h3>Restaurante Souza Peixes e Frutos do Mar - Torres</h3>
+                <p>Torres - Endereço:R. Egídio Michaelsen, 106 - Predial, Torres - RS, 95560-000</p>
+                <button onclick="openModal('restaurant', 'Restaurante de Frutos do Mar', 'Torres')">Reservar Mesa</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="trips" class="section">
+        <h2>Viagens Personalizadas</h2>
+        <p>Escolha sua rota pelo RS: de Porto Alegre a Gramado, com opções de embarque e desembarque flexíveis.</p>
+    </section>
+
+    <section id="destinations" class="section">
+        <h2>Destinos no RS</h2>
+        <div id="map" style="height: 400px; margin-bottom: 20px;"></div>
+        <div class="grid">
+            <div class="card">
+                <h3>Gramado</h3>
+                <p>Cidade das flores e neve.</p>
+            </div>
+            <div class="card">
+                <h3>Serra Gaúcha</h3>
+                <p>Vinhos e paisagens incríveis.</p>
+            </div>
+            <div class="card">
+                <h3>Litoral Norte</h3>
+                <p>Praias e ecoturismo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modais -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div id="modal-results"></div>
+            <form id="modal-form">
+                <!-- Conteúdo dinâmico será inserido pelo JavaScript -->
+            </form>
+            <div id="pix-payment" style="display: none; text-align: center; margin-top: 20px;">
+                <div id="qrcode"></div>
+                <div class="pix-key-container">
+                    <label for="pix-key">Chave Pix (Copia e Cola):</label>
+                    <input type="text" id="pix-key" readonly>
+                    <button type="button" onclick="copyPixKey()">Copiar Chave</button>
+                </div>
+                <p id="pix-validation" style="color: green;"></p>
+            </div>
+        </div>
+    </div>
+    <div id="whatsapp-button" class="whatsapp-button">
+        <button onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i> Fale Conosco</button>
+    </div>
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeWhatsAppModal()">&times;</span>
+            <h2>Fale Conosco via WhatsApp</h2>
+            <p>Envie sua mensagem e entraremos em contato!</p>
+            <form id="whatsapp-form">
+                <label for="whatsapp-name">Nome:</label>
+                <input type="text" id="whatsapp-name" required>
+                <label for="whatsapp-phone">Telefone (ex.: +55XXYYYYYYYY):</label>
+                <input type="tel" id="whatsapp-phone" required>
+                <label for="whatsapp-message">Mensagem:</label>
+                <textarea id="whatsapp-message" required></textarea>
+                <button type="submit">Enviar via WhatsApp</button>
+            </form>
+            <p id="whatsapp-error" style="color: red; display: none;"></p>
+        </div>
+    </div>
+
+   <footer>
+    <p>&copy; South Horizon Travel | southhorizontravel@gmail.com | (51) 98129-9926 | © 2025</p>
+    <div style="margin-top: 18px;">
+        <strong>Encontre a South Horizon Travel:</strong>
+        <a href="https://wa.me/5551981299926?text=quero+saber+mais!" target="_blank" title="WhatsApp" style="margin: 0 10px;">
+            <i class="fab fa-whatsapp" style="font-size: 2em; color: #25D366; vertical-align: middle;"></i>
+        </a>
+        <a href="https://www.instagram.com/southhorizontravel/" target="_blank" title="Instagram" style="margin: 0 10px;">
+            <i class="fab fa-instagram" style="font-size: 2em; color: #C13584; vertical-align: middle;"></i>
+        </a>
+    </div>
+</footer>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

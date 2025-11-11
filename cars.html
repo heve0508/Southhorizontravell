@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluguel de Carros - South Horizon Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+</head>
+<body>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="hamburger-menu" class="hamburger-menu">
+        <ul>
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="flights.html" class="nav-link">Voos</a></li>
+            <li><a href="buses.html" class="nav-link active">Ônibus</a></li>
+            <li><a href="cars.html" class="nav-link">Aluguel de Carros</a></li>
+            <li><a href="hotels.html" class="nav-link">Hotéis</a></li>
+            <li><a href="restaurants.html" class="nav-link">Restaurantes</a></li>
+            <li><a href="destinations.html" class="nav-link">Destinos</a></li>
+            <li><a href="promotions.html" class="nav-link">Promoções</a></li>
+            <li><a href="info.html" class="nav-link">Sobre nós</a></li>
+            <li><a href="purchases.html" class="nav-link" onclick="showPurchases()">Minhas Compras</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button onclick="showLogin()">Login</button>
+        </div>
+    </div>
+    <header>
+        <div class="top-bar">
+            <a href="assis.html" title="Chat de Assistência" class="chat-icon">
+                <i class="fa-solid fa-comments"></i>
+            </a>
+        </div>
+        <div class="logo">
+            <img src="img/South.png" alt="South Horizon Travel Logo">
+            <h2>South Horizon Travel</h2>
+        </div>
+    </header>
+
+    <section id="cars" class="section">
+        <h2>Aluguel de Automóveis</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://www.localiza.com/brasil-site/geral/Frota/COMP.png" alt="Jeep Compass 1.3 Turbo, Volkswagen Taos 1.4 TSI, Hyundai New Tucson 1.6 Turbo ou similar*">
+                <h3>Jeep Compass 1.3 Turbo, Volkswagen Taos 1.4 TSI, Hyundai New Tucson 1.6 Turbo ou similar</h3>
+                <p>R$537,29/Dia</p>
+                <button onclick="openModal('car', 'Jeep Compass', 'R$537,29/dia')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://www.localiza.com/brasil-site/geral/Frota/ARGO.png" alt="Fiat Argo 1.0, VW Polo 1.0, Hyundai HB20 1.0 ou similar">
+                <h3>Fiat Argo 1.0, VW Polo 1.0, Hyundai HB20 1.0 ou similar</h3>
+                <p>R$130,95/Dia</p>
+                <button onclick="openModal('car', 'Fiat Argo', 'R$130,95/dia')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://www.localiza.com/brasil-site/geral/Frota/MOBI.png" alt="Fiat Mobi 1.0, Renault Kwid 1.0 ou similar*">
+                <h3>Fiat Mobi 1.0, Renault Kwid 1.0 ou similar</h3>
+                <p>R$126,91/Dia</p>
+                <button onclick="openModal('car', 'Fiat Mobi', 'R$126,91/Dia')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://www.localiza.com/brasil-site/geral/Frota/HB2C.png" alt="Hyundai HB20S 1.0, GM Onix 1.0, Fiat Cronos 1.0 ou similar*">
+                <h3>Hyundai HB20S 1.0, GM Onix 1.0, Fiat Cronos 1.0 ou similar*</h3>
+                <p>R$144,95/Dia</p>
+                <button onclick="openModal('car', 'Hyundai HB20S', 'R$144,95/Dia')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://www.localiza.com/brasil-site/geral/Frota/HB1X.png" alt="Hyundai HB20S 1.0 Turbo AT, GM Onix Plus 1.0 Turbo AT, Fiat Cronos 1.3 AT ou similar">
+                <h3>Hyundai HB20S 1.0 Turbo AT, GM Onix Plus 1.0 Turbo AT, Fiat Cronos 1.3 AT ou similar*</h3>
+                <p>R$232,66/Dia</p>
+                <button onclick="openModal('car', 'Hyundai HB20S', 'R$232,66/Dia')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://www.localiza.com/brasil-site/geral/Frota/ONIH.png" alt="GM Onix LTZ 1.0 AT, Hyundai HB20 1.0 AT ou similar*">
+                <h3>GM Onix LTZ 1.0 AT, Hyundai HB20 1.0 AT ou similar</h3>
+                <p>R$165,95/Dia</p>
+                <button onclick="openModal('car', 'GM Onix LTZ 1.0 AT, Hyundai HB20 1.0 AT ou similar*', 'R$165,95/Dia')">Reservar</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div id="modal-results"></div>
+            <form id="modal-form">
+                <!-- Conteúdo dinâmico será inserido pelo JavaScript -->
+            </form>
+            <div id="pix-payment" style="display: none; text-align: center; margin-top: 20px;">
+                <div id="qrcode"></div>
+                <div class="pix-key-container">
+                    <label for="pix-key">Chave Pix (Copia e Cola):</label>
+                    <input type="text" id="pix-key" readonly>
+                    <button type="button" onclick="copyPixKey()">Copiar Chave</button>
+                </div>
+                <p id="pix-validation" style="color: green;"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="whatsapp-button" class="whatsapp-button">
+        <button onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i> Fale Conosco</button>
+    </div>
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeWhatsAppModal()">&times;</span>
+            <h2>Fale Conosco via WhatsApp</h2>
+            <p>Envie sua mensagem e entraremos em contato!</p>
+            <form id="whatsapp-form">
+                <label for="whatsapp-name">Nome:</label>
+                <input type="text" id="whatsapp-name" required>
+                <label for="whatsapp-phone">Telefone (ex.: +55XXYYYYYYYY):</label>
+                <input type="tel" id="whatsapp-phone" required>
+                <label for="whatsapp-message">Mensagem:</label>
+                <textarea id="whatsapp-message" required></textarea>
+                <button type="submit">Enviar via WhatsApp</button>
+            </form>
+            <p id="whatsapp-error" style="color: red; display: none;"></p>
+        </div>
+    </div>
+
+     <footer>
+    <p>&copy; South Horizon Travel | southhorizontravel@gmail.com | (51) 98129-9926 | © 2025</p>
+    <div style="margin-top: 18px;">
+        <strong>Encontre a South Horizon Travel:</strong>
+        <a href="https://wa.me/5551981299926?text=quero+saber+mais!" target="_blank" title="WhatsApp" style="margin: 0 10px;">
+            <i class="fab fa-whatsapp" style="font-size: 2em; color: #25D366; vertical-align: middle;"></i>
+        </a>
+        <a href="https://www.instagram.com/southhorizontravel/" target="_blank" title="Instagram" style="margin: 0 10px;">
+            <i class="fab fa-instagram" style="font-size: 2em; color: #C13584; vertical-align: middle;"></i>
+        </a>
+    </div>
+</footer>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+function toggleMenu() {
+    var menu = document.getElementById('hamburger-menu');
+    menu.classList.toggle('show');
+}
+window.addEventListener('resize', function() {
+    if(window.innerWidth > 900) {
+        document.getElementById('hamburger-menu').classList.remove('show');
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurantes - South Horizon Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+</head>
+<body>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="hamburger-menu" class="hamburger-menu">
+        <ul>
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="flights.html" class="nav-link">Voos</a></li>
+            <li><a href="buses.html" class="nav-link active">Ônibus</a></li>
+            <li><a href="cars.html" class="nav-link">Aluguel de Carros</a></li>
+            <li><a href="hotels.html" class="nav-link">Hotéis</a></li>
+            <li><a href="restaurants.html" class="nav-link">Restaurantes</a></li>
+            <li><a href="destinations.html" class="nav-link">Destinos</a></li>
+            <li><a href="promotions.html" class="nav-link">Promoções</a></li>
+            <li><a href="info.html" class="nav-link">Sobre nós</a></li>
+            <li><a href="purchases.html" class="nav-link" onclick="showPurchases()">Minhas Compras</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button onclick="showLogin()">Login</button>
+        </div>
+    </div>
+    <header>
+        <div class="top-bar">
+            <a href="assis.html" title="Chat de Assistência" class="chat-icon">
+                <i class="fa-solid fa-comments"></i>
+            </a>
+        </div>
+        <div class="logo">
+            <img src="img/South.png" alt="South Horizon Travel Logo">
+            <h2>South Horizon Travel</h2>
+        </div>
+    </header>
+
+    <section id="restaurants" class="section">
+        <h2>Restaurantes</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/5a/bf/c9/nosso-parte-externa-com.jpg?w=900&h=500&s=1" alt="Restaurante Vegetariano - Porto Alegre">
+                <h3>Restaurante em Porto Alegre - Alecrim e Saúde</h3>
+                <p>Estrelas: 4 - Endereço: R. Erasto Roxo de Araújo Corrêa, 24 - Boa Vista, Porto Alegre - RS, 91340-180</p>
+                <button onclick="openModal('restaurante', 'Alecrim e Saúde', 'Porto Alegre')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTubGiZ6RPnk2mmdYVtzITBVl1Um9SkAVa_Aw&s" alt="Restaurante Italiano">
+                <h3>Restaurante Di Paolo - Bento Gonçalves</h3>
+                <p>Estrelas: 4 - Endereço: Km 217 BR-470 s/n - Pomarosa, Bento Gonçalves - RS, 95700-000</p>
+                <button onclick="openModal('restaurante', 'Restaurante Di Paolo', 'Bento Gonçalves')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWtMFF353AJeTGIy_PQi3_SvasLcOO2VQ7Cg&s" alt="Restaurante de Frutos do Mar">
+                <h3>Restaurante Souza Peixes e Frutos do Mar - Torres</h3>
+                <p>Estrelas: 4 - Endereço: R. Egídio Michaelsen, 106 - Predial, Torres - RS, 95560-000</p>
+                <button onclick="openModal('restaurante', 'Souza Peixes e Frutos do Mar', 'Torres')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://imaginanaviagem.com/wp-content/uploads/2016/10/Bela-Vista-Cafe%CC%81-Colonial-Capa.jpg" alt="Café Colonial Gramado">
+                <h3>Café Colonial - Gramado</h3>
+                <p>Estrelas: 4 - Endereço: Av. Don Luiz Guanella, 1168 - Vila Suica, Canela - RS, 95680-000</p>
+                <button onclick="openModal('restaurante', 'Café Colonial Gramado', 'Gramado')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/19/4f/5f/16/okawa-sushi-bar.jpg" alt="Sushi Serra Gaúcha">
+                <h3>Okawa Sushi Bar - Cachoeirinha</h3>
+                <p>Estrelas: 4 - Endereço: Av. Gen. Flores da Cunha, 1761 - Vila Cachoeirinha, Cachoeirinha - RS, 94910-002</p>
+                <button onclick="openModal('restaurante', 'Okawa Sushi Bar', 'Cachoeirinha')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://www.rbsdirect.com.br/imagesrc/25708760.jpg?w=700" alt="Pizzaria Tradicional">
+                <h3>La Fiamma Pizzaria e Restaurante - Santa Cruz do Sul</h3>
+                <p>Estrelas: 4 - Endereço: R. Borges de Medeiros, 580 - Centro, Santa Cruz do Sul - RS, 96810-034</p>
+                <button onclick="openModal('restaurante', 'La Fiamma Pizzaria e Restaurante', 'Santa Cruz do Sul')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Yiornj3IsWjOM4zEk374gnqJpkke1RSDfQ&s" alt="Culinária Gaúcha">
+                <h3>Q Brasa Culinária Gaúcha - Alegrete</h3>
+                <p>Estrelas: 4 - Endereço: Rua Bento Manoel, 700 - Cidade Alta, Alegrete - RS, 97543-070</p>
+                <button onclick="openModal('restaurante', 'Q Brasa Culinária Gaúcha', 'Alegrete')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://www.rbsdirect.com.br/imagesrc/25708760.jpg?w=700" alt="Pizzaria Tradicional">
+                <h3>Restaurante Moranguinho - Bagé</h3>
+                <p>Estrelas: 4 - Endereço: R. Caetano Gonçalves, 1238 - Centro, Bagé - RS, 96400-040</p>
+                <button onclick="openModal('restaurante', 'Restaurante Moranguinho', 'Bagé')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://img.restaurantguru.com/r74f-exterior-Restaurante-e-Churrascaria-Fogo-Campeiro.jpg" alt="Restaurante Barra do Ribeiro">
+                <h3>Restaurante e Churrascaria Fogo Campeiro - Barra do Ribeiro</h3>
+                <p>Estrelas: 4 - Endereço: Av. Visc. do Rio Grande, 1656 - Centro, Barra do Ribeiro - RS, 96790-000</p>
+                <button onclick="openModal('restaurante', 'Restaurante e Churrascaria Fogo Campeiro', 'Barra do Ribeiro')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/55/a0/d1/restaurante-e-churrascaria.jpg?w=900&h=500&s=1" alt="Restaurante em Uruguaiana">
+                <h3>Churrascaria e Restaurante Prodócimo - Uruguaiana</h3>
+                <p>Estrelas: 4 - Endereço: R. 15 de Novembro, 2618 - São Miguel, Uruguaiana - RS, 97502-784</p>
+                <button onclick="openModal('restaurante', 'Churrascaria e Restaurante Prodócimo', 'Uruguaiana')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://img.restaurantguru.com/r0bd-Restaurante-Degusta-exterior.jpg" alt="Restaurante Erechim">
+                <h3>Restaurante Degusta - Erechim</h3>
+                <p>Estrelas: 4 - Endereço: BR-153, n° 674 - Bairro Presidente Castelo Branco, Erechim - RS, 99708-286</p>
+                <button onclick="openModal('restaurante', 'Restaurante Degusta', 'Erechim')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiclsvqwyXK4VmY-NUkn4owxqtF8jLbO2BlvZaSdbz37o-tpHph9lYbUuucAx4f0LhU2cFN3tN7mgeApGakos1fnlMb5F_4fi4kGHKyXrQQY9KxeVWOdpCPgRDfV85NnGqM52fF-qhlgy7/s1600/Pizzaria+Don+Getil+Passo+Fundo.jpg" alt="Restaurante em Passo Fundo">
+                <h3>Don Gentil Pizzaria E Petiscaria - Passo Fundo</h3>
+                <p>Estrelas: 4 - Endereço: R. dos Andradas, 572 - Boqueirão, Passo Fundo - RS, 99025-020</p>
+                <button onclick="openModal('restaurante', 'Don Gentil Pizzaria E Petiscaria', 'Passo Fundo')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://www.rbsdirect.com.br/imagesrc/25712250.jpg?w=700" alt="Restaurante em Pelotas">
+                <h3>Madre Mia! - Pelotas</h3>
+                <p>Estrelas: 4 - Endereço: R. Santa Cruz, 2200 - Centro, Pelotas - RS, 96015-710</p>
+                <button onclick="openModal('restaurante', 'Madre Mia!', 'Pelotas')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="data:image/jpeg;base64,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" alt="Restaurante em Santa Maria">
+                <h3>Carniceria Del Fuego - Santa Maria</h3>
+                <p>Estrelas: 4 - Endereço: BR-158, 1800 - Unidade 201 A - Nossa Sra. de Lourdes, Santa Maria - RS, 97060-220</p>
+                <button onclick="openModal('restaurante', 'Carniceria Del Fuego', 'Santa Maria')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ62U0_WyIqb3fxmXQfq52a0opqybhH8OsdQ&s" alt="Restaurante em Tramandaí">
+                <h3>STYVE PIZZA - Tramandaí</h3>
+                <p>Estrelas: 4 - Endereço: Av. Emancipação, 2890 - São Francisco 1, Tramandaí - RS, 95590-000</p>
+                <button onclick="openModal('restaurante', 'STYVE PIZZA', 'Tramandaí')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipOZSArQrwjwc94xJLFFJQW2LssQxR31cPohk8Ut=w408-h288-k-no" alt="Restaurante em Vacaria">
+                <h3>Restaurante e Lancheria Bom Sabore - Vacaria</h3>
+                <p>Estrelas: 4 - Endereço: R. Ramiro Barcelos, 969 - Centro, Vacaria - RS, 95200-000</p>
+                <button onclick="openModal('restaurante', 'Restaurante e Lancheria Bom Sabore', 'Vacaria')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1c/63/b3/venha-para-o-los-passos.jpg" alt="Restaurante Santo Ângelo">
+                <h3>Restaurante Los Passos - Santo Ângelo</h3>
+                <p>Estrelas: 4 - Endereço: R. dos Andradas, 1000 - Centro, Santo Ângelo - RS, 98803-430</p>
+                <button onclick="openModal('restaurante', 'Restaurante Los Passos', 'Santo Ângelo')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipPe0isXMaRUUvNyE6-Yf4Kif9R4Aif1TFzWWTSx=w408-h544-k-no" alt="Restaurante em Xangri-lá">
+                <h3>X na 10 - Xangri-lá</h3>
+                <p>Estrelas: 4 - Endereço: Av. Paraguassu, 3773 - Xangri-lá, RS, 95588-000</p>
+                <button onclick="openModal('restaurante', 'X na 10', 'Xangri-lá')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/14/a4/7a/fachada-ah-casa.jpg?w=900&h=500&s=1" alt="Restaurante em Canoas-RS">
+                <h3>Ah! Casa - Café, Bistrô & Confeitaria - Canoas</h3>
+                <p>Estrelas: 4 - Endereço: Av. Farroupilha, 3989 - Mal. Rondon, Canoas - RS, 92020-001</p>
+                <button onclick="openModal('restaurante', 'Ah! Casa - Café, Bistrô & Confeitaria', 'Canoas')">Reservar Mesa</button>
+            </div>
+            <div class="card">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/21/7a/13/01/fachada-nova-com-o-tao.jpg?w=900&h=500&s=1" alt="Restaurante em Cruz Alta-RS">
+                <h3>Olivas Cruz Alta Restaurante - Cruz Alta</h3>
+                <p>Estrelas: 5 - Endereço: R. Gen. Osório, 823 - Centro, Cruz Alta - RS, 98005-150</p>
+                <button onclick="openModal('restaurante', 'Olivas Cruz Alta Restaurante', 'Cruz Alta')">Reservar Mesa</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div id="modal-results"></div>
+            <form id="modal-form">
+                <!-- Conteúdo dinâmico será inserido pelo JavaScript -->
+            </form>
+            <div id="pix-payment" style="display: none; text-align: center; margin-top: 20px;">
+                <div id="qrcode"></div>
+                <div class="pix-key-container">
+                    <label for="pix-key">Chave Pix (Copia e Cola):</label>
+                    <input type="text" id="pix-key" readonly>
+                    <button type="button" onclick="copyPixKey()">Copiar Chave</button>
+                </div>
+                <p id="pix-validation" style="color: green;"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="whatsapp-button" class="whatsapp-button">
+        <button onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i> Fale Conosco</button>
+    </div>
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeWhatsAppModal()">&times;</span>
+            <h2>Fale Conosco via WhatsApp</h2>
+            <p>Envie sua mensagem e entraremos em contato!</p>
+            <form id="whatsapp-form">
+                <label for="whatsapp-name">Nome:</label>
+                <input type="text" id="whatsapp-name" required>
+                <label for="whatsapp-phone">Telefone (ex.: +55XXYYYYYYYY):</label>
+                <input type="tel" id="whatsapp-phone" required>
+                <label for="whatsapp-message">Mensagem:</label>
+                <textarea id="whatsapp-message" required></textarea>
+                <button type="submit">Enviar via WhatsApp</button>
+            </form>
+            <p id="whatsapp-error" style="color: red; display: none;"></p>
+        </div>
+    </div>
+
+    <div id="customer-support-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeCustomerSupportModal()">&times;</span>
+            <h2>Assistência ao Cliente</h2>
+            <p>Entre em contato com nossa equipe para suporte!</p>
+            <form id="customer-support-form">
+                <label for="support-name">Nome:</label>
+                <input type="text" id="support-name" required>
+                <label for="support-email">Email:</label>
+                <input type="email" id="support-email" required>
+                <label for="support-message">Mensagem:</label>
+                <textarea id="support-message" required></textarea>
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+            <p id="support-error" style="color: red; display: none;"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; South Horizon Travel | southhorizontravel@gmail.com | (51) 98129-9926 | © 2025</p>
+        <div style="margin-top: 18px;">
+            <strong>Encontre a South Horizon Travel:</strong>
+            <a href="https://wa.me/5551981299926?text=quero+saber+mais!" target="_blank" title="WhatsApp" style="margin: 0 10px;">
+                <i class="fab fa-whatsapp" style="font-size: 2em; color: #25D366; vertical-align: middle;"></i>
+            </a>
+            <a href="https://www.instagram.com/southhorizontravel/" target="_blank" title="Instagram" style="margin: 0 10px;">
+                <i class="fab fa-instagram" style="font-size: 2em; color: #C13584; vertical-align: middle;"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('hamburger-menu');
+            menu.classList.toggle('show');
+        }
+        window.addEventListener('resize', function() {
+            if(window.innerWidth > 900) {
+                document.getElementById('hamburger-menu').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

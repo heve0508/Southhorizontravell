@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voos - South Horizon Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="https://favicon.io/favicon-converter/img/airplane-32x32.png">
+</head>
+<body>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div id="hamburger-menu" class="hamburger-menu">
+        <ul>
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="flights.html" class="nav-link">Voos</a></li>
+            <li><a href="buses.html" class="nav-link active">Ônibus</a></li>
+            <li><a href="cars.html" class="nav-link">Aluguel de Carros</a></li>
+            <li><a href="hotels.html" class="nav-link">Hotéis</a></li>
+            <li><a href="restaurants.html" class="nav-link">Restaurantes</a></li>
+            <li><a href="destinations.html" class="nav-link">Destinos</a></li>
+            <li><a href="promotions.html" class="nav-link">Promoções</a></li>
+            <li><a href="info.html" class="nav-link">Sobre nós</a></li>
+            <li><a href="purchases.html" class="nav-link" onclick="showPurchases()">Minhas Compras</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button onclick="showLogin()">Login</button>
+        </div>
+    </div>
+    <header>
+        <div class="top-bar">
+            <a href="assis.html" title="Chat de Assistência" class="chat-icon">
+                <i class="fa-solid fa-comments"></i>
+            </a>
+        </div>
+        <div class="logo">
+            <img src="img/South.png" alt="South Horizon Travel Logo">
+            <h2>South Horizon Travel</h2>
+        </div>
+    </header>
+
+    <section id="flights" class="section">
+        <h2>Voos</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/bd/3a/80/bd3a80e9888cb3cd4ab5ea284fa9375a.jpg" alt="Voo Porto Alegre - Gramado">
+                <h3>Voo Porto Alegre - Gramado</h3>
+                <p>Companhia: Azul - R$350,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Gramado', 'R$350,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/1200x/c1/cd/ec/c1cdecadcd72d71b6558bb50c514ee48.jpg" alt="Voo Porto Alegre - Torres">
+                <h3>Voo Porto Alegre - Torres</h3>
+                <p>Companhia: LATAM - R$629,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Torres', 'R$280,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/1200x/5f/3b/d5/5f3bd5caf426e23056c1ff1e07354526.jpg" alt="Voo Porto Alegre - Canela">
+                <h3>Voo Porto Alegre - Canela</h3>
+                <p>Companhia: Azul - R$360,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Canela', 'R$360,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://static.poder360.com.br/2021/01/aeronave-azul-coronavac-848x477.jpg" alt="Voo Porto Alegre - Gramado">
+                <h3>Voo Porto Alegre - Caxias do Sul</h3>
+                <p>Companhia: Gol - R$717,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Caxias do Sul', 'R$717,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://static.ndmais.com.br/2025/09/azul-devolvera-aviao-embraer-que-ostentava-pintura-da-bandeira-do-brasil-na-fuselagem.jpg" alt="Voo Porto Alegre - Gramado">
+                <h3>Voo Porto Alegre - Santo Ângelo</h3>
+                <p>Companhia: Azul - R$1.020,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Santo Ângelo', 'R$1.020,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFBWfeH-SLSXPepAwVecWwWXlNH0K3rHi-uQ&s" alt="Voo Porto Alegre - Gramado">
+                <h3>Voo Porto Alegre - Passo Fundo</h3>
+                <p>Companhia: Azul - R$910,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Passo Fundo', 'R$910,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeAQ8OPxYaJx2YKe3FJOEtZzW9eV8XqEvNbg&s" alt="Voo Porto Alegre - Gramado">
+                <h3>Voo Porto Alegre - Uruguaiana</h3>
+                <p>Companhia: Azul - R$276,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Uruguaiana', 'R$2776,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://aeroin.net/wp-content/uploads/2021/12/Azul-E190-PR-AZL-21120901-1024x680.jpg" alt="Voo Porto Alegre - Gramado">
+                <h3>Voo Porto Alegre - Pelotas</h3>
+                <p>Companhia: Azul - R$277,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Pelotas', 'R$277,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://admin.panrotas.com.br/media/thumb/cropper/permalink/fix/1200,900/?source=media-files-original/2023/07/07/fdc8b2794941d677af5e4691446914ed-4ad1e7c5507f45c7bdbcd1a324edc24c.jpg" alt="Voo Porto Alegre - Gramado">
+                <h3>Voo Porto Alegre - Bagé</h3>
+                <p>Companhia: Azul - R$279,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Bagé', 'R$279,00')">Reservar</button>
+            </div>
+            <div class="card">
+                <img src="https://aerojr.com/imagens_upload/2019/01/azul-1-1024x694.jpg" alt="Voo Porto Alegre - Gramado">
+                <h3>Voo Porto Alegre - Santa Maria</h3>
+                <p>Companhia: Azul - R$265,00</p>
+                <button onclick="openModal('flight', 'Voo Porto Alegre - Santa Maria', 'R$265,00')">Reservar</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="map" style="height: 400px; margin: 20px auto; max-width: 1200px;"></div>
+
+    <div id="search-trip" class="search-form">
+        <h1>Busca de Viagens</h1>
+        <p>Encontre a melhor opção para sua próxima aventura!</p>
+        <form id="search-trip-form">
+            <div class="form-group">
+                <i class="fas fa-plane-departure"></i>
+                <input type="text" id="origem" placeholder="Origem" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-plane-arrival"></i>
+                <input type="text" id="destino" placeholder="Destino" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-calendar-alt"></i>
+                <input type="date" id="dataIda" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-calendar-alt"></i>
+                <input type="date" id="dataVolta" required>
+            </div>
+            <button type="submit" class="search-button"><i class="fas fa-search"></i> Buscar</button>
+        </form>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div id="modal-results"></div>
+            <form id="modal-form">
+                <!-- Conteúdo dinâmico será inserido pelo JavaScript -->
+            </form>
+            <div id="pix-payment" style="display: none; text-align: center; margin-top: 20px;">
+                <div id="qrcode"></div>
+                <div class="pix-key-container">
+                    <label for="pix-key">Chave Pix (Copia e Cola):</label>
+                    <input type="text" id="pix-key" readonly>
+                    <button type="button" onclick="copyPixKey()">Copiar Chave</button>
+                </div>
+                <p id="pix-validation" style="color: green;"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="whatsapp-button" class="whatsapp-button">
+        <button onclick="openWhatsAppModal()"><i class="fab fa-whatsapp"></i> Fale Conosco</button>
+    </div>
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeWhatsAppModal()">&times;</span>
+            <h2>Fale Conosco via WhatsApp</h2>
+            <p>Envie sua mensagem e entraremos em contato!</p>
+            <form id="whatsapp-form">
+                <label for="whatsapp-name">Nome:</label>
+                <input type="text" id="whatsapp-name" required>
+                <label for="whatsapp-phone">Telefone (ex.: +55XXYYYYYYYY):</label>
+                <input type="tel" id="whatsapp-phone" required>
+                <label for="whatsapp-message">Mensagem:</label>
+                <textarea id="whatsapp-message" required></textarea>
+                <button type="submit">Enviar via WhatsApp</button>
+            </form>
+            <p id="whatsapp-error" style="color: red; display: none;"></p>
+        </div>
+    </div>
+    <footer>
+    <p>&copy; South Horizon Travel | southhorizontravel@gmail.com | (51) 98129-9926 | © 2025</p>
+    <div style="margin-top: 18px;">
+        <strong>Encontre a South Horizon Travel:</strong>
+        <a href="https://wa.me/5551981299926?text=quero+saber+mais!" target="_blank" title="WhatsApp" style="margin: 0 10px;">
+            <i class="fab fa-whatsapp" style="font-size: 2em; color: #25D366; vertical-align: middle;"></i>
+        </a>
+        <a href="https://www.instagram.com/southhorizontravel/" target="_blank" title="Instagram" style="margin: 0 10px;">
+            <i class="fab fa-instagram" style="font-size: 2em; color: #C13584; vertical-align: middle;"></i>
+        </a>
+    </div>
+</footer>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById('hamburger-menu');
+        menu.classList.toggle('show');
+        document.body.classList.toggle('menu-open', menu.classList.contains('show'));
+    }
+    window.addEventListener('resize', function() {
+        if(window.innerWidth > 900) {
+            document.getElementById('hamburger-menu').classList.remove('show');
+            document.body.classList.remove('menu-open');
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var menuLinks = document.querySelectorAll('#hamburger-menu ul li a');
+        menuLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('hamburger-menu').classList.remove('show');
+                document.body.classList.remove('menu-open');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
