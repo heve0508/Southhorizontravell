@@ -32,28 +32,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Lista de destinos com preços
         var destinations = [
-            { name: 'Gramado', coords: [-29.37404, -50.87746], desc: 'Cidade das flores e neve'},
-            { name: 'Bento Gonçalves', coords: [-29.16457, -51.51634], desc: 'Vinhos e paisagens incríveis'},
-            { name: 'Torres', coords: [-29.33833, -49.72877], desc: 'Praias e ecoturismo'},
-            { name: 'Vacaria', coords: [-28.49894, -50.93269], desc: 'Terra de maior festa tradicionalista da américa do sul'},
-            { name: 'Canela', coords: [-29.36298, -50.80881], desc: 'Canela faz parte de um dos destinos turísticos mais charmosos do Brasil'},
-            { name: 'Caxias Do Sul', coords: [-29.17208, -51.18484], desc: 'Combina tradição e modernidade'},
-            { name: 'Cruz Alta', coords: [-28.64399, -53.61857], desc: 'Charme interiorano e tranquilidade'},
-            { name: 'Erechim', coords: [-27.63434, -52.27496], desc: 'Um dos municípios mais seguros do estado'},
-            { name: 'Alegrete', coords: [-29.78341, -55.79404], desc: 'História, cultura e gastronomia'},
-            { name: 'Barra Do Ribeiro', coords: [-30.30064, -51.3036], desc: 'Praias de água doce e esportes náuticos'},
-            { name: 'Cachoeirinha', coords: [-29.94498, -51.09494], desc: 'Divisa com Porto Alegre'},
-            { name: 'Santo Ângelo', coords: [-28.30040, -54.27036], desc: 'História riquíssima e belezas naturais'},
-            { name: 'Passo Fundo', coords: [-28.26286, -52.40548], desc: 'Capital Nacional da Literatura'},
-            { name: 'Uruguaiana', coords: [-29.75841, -57.08288], desc: 'Destino turístico popular'},
-            { name: 'Xangri-lá', coords: [-29.80249, -50.04089], desc: 'Belezas naturais e praias'},
-            { name: 'Pelotas', coords: [-31.76770, -52.32330], desc: 'População diversificada e eventos culturais'},
-            { name: 'Bagé', coords: [-31.332217, -54.09710], desc: 'Vocação para agronegócios'},
-            { name: 'Porto Alegre', coords: [-30.03627, -51.18745], desc: 'Capital do Rio Grande do Sul'},
-            { name: 'Canoas', coords: [-29.90664, -51.18811], desc: 'Cidade estratégica na região metropolitana'},
-            { name: 'Santa Maria', coords: [-29.68649, -53.81710], desc: 'Cidade universitária e polo de serviços' },
-            { name: 'Santa Cruz Do Sul', coords: [-29.70926, -52.43385], desc: 'Economia baseada na produção de tabaco'},
-            { name: 'Tramandaí', coords: [-29.98351, -50.13344], desc: 'Cidade praiana do litoral norte'}
+            { name: 'Gramado', coords: [-29.37404, -50.87746], desc: 'Cidade das flores e neve', price: 300 },
+            { name: 'Bento Gonçalves', coords: [-29.16457, -51.51634], desc: 'Vinhos e paisagens incríveis', price: 250 },
+            { name: 'Torres', coords: [-29.33833, -49.72877], desc: 'Praias e ecoturismo', price: 200 },
+            { name: 'Vacaria', coords: [-28.49894, -50.93269], desc: 'Terra de maior festa tradicionalista da américa do sul', price: 180 },
+            { name: 'Canela', coords: [-29.36298, -50.80881], desc: 'Canela faz parte de um dos destinos turísticos mais charmosos do Brasil', price: 280 },
+            { name: 'Caxias Do Sul', coords: [-29.17208, -51.18484], desc: 'Combina tradição e modernidade', price: 220 },
+            { name: 'Cruz Alta', coords: [-28.64399, -53.61857], desc: 'Charme interiorano e tranquilidade', price: 150 },
+            { name: 'Erechim', coords: [-27.63434, -52.27496], desc: 'Um dos municípios mais seguros do estado', price: 170 },
+            { name: 'Alegrete', coords: [-29.78341, -55.79404], desc: 'História, cultura e gastronomia', price: 160 },
+            { name: 'Balneário Pinhal', coords: [-30.24775, -50.23400], desc: 'Praias de areia branca e águas cristalinas', price: 190 },
+            { name: 'Barra Do Ribeiro', coords: [-30.30064, -51.3036], desc: 'Praias de água doce e esportes náuticos', price: 140 },
+            { name: 'Cachoeirinha', coords: [-29.94498, -51.09494], desc: 'Divisa com Porto Alegre', price: 130 },
+            { name: 'Santo Ângelo', coords: [-28.30040, -54.27036], desc: 'História riquíssima e belezas naturais', price: 200 },
+            { name: 'Passo Fundo', coords: [-28.26286, -52.40548], desc: 'Capital Nacional da Literatura', price: 210 },
+            { name: 'Uruguaiana', coords: [-29.75841, -57.08288], desc: 'Destino turístico popular', price: 230 },
+            { name: 'Xangri-lá', coords: [-29.80249, -50.04089], desc: 'Belezas naturais e praias', price: 180 },
+            { name: 'Pelotas', coords: [-31.76770, -52.32330], desc: 'População diversificada e eventos culturais', price: 200 },
+            { name: 'Bagé', coords: [-31.332217, -54.09710], desc: 'Vocação para agronegócios', price: 190 },
+            { name: 'Porto Alegre', coords: [-30.03627, -51.18745], desc: 'Capital do Rio Grande do Sul', price: 0 },
+            { name: 'Canoas', coords: [-29.90664, -51.18811], desc: 'Cidade estratégica na região metropolitana', price: 140 },
+            { name: 'Santa Maria', coords: [-29.68649, -53.81710], desc: 'Cidade universitária e polo de serviços', price: 180 },
+            { name: 'Santa Cruz Do Sul', coords: [-29.70926, -52.43385], desc: 'Economia baseada na produção de tabaco', price: 200 },
+            { name: 'Tramandaí', coords: [-29.98351, -50.13344], desc: 'Cidade praiana do litoral norte', price: 170 }
         ];
 
         // Adicionar marcadores ao mapa
@@ -61,9 +62,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (dest.name !== 'Porto Alegre') {
                 L.marker(dest.coords)
                     .addTo(map)
-                    .bindPopup(`<b>${dest.name}</b><br>${dest.desc}<br>`)
+                    .bindPopup(`<b>${dest.name}</b><br>${dest.desc}<br>Preço: R$${dest.price},00`)
                     .on('click', () => {
-                        openModal('flight', `Voo Porto Alegre - ${dest.name}`);
+                        openModal('flight', `Voo Porto Alegre - ${dest.name}`, `R$${dest.price},00`);
                     });
             } else {
                 L.marker(dest.coords)
